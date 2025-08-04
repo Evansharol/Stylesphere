@@ -1,0 +1,70 @@
+[
+  {
+    "id": 2,
+    "name": "T Shirt",
+    "category": "Women",
+    "price": 4999.99,
+    "salePrice": 299.97,
+    "stock": 48,
+    "description": "",
+    "status": "Selling",
+    "published": true,
+    "imageUrl": "/uploads/image-1753352731073-788195641.jpeg",
+    "createdAt": "2025-07-24T10:25:31.092Z",
+    "updatedAt": "2025-07-25T06:47:38.941Z"
+  },
+  {
+    "id": 3,
+    "name": "Earing",
+    "category": "Accessories",
+    "price": 50,
+    "salePrice": 50,
+    "stock": 98,
+    "description": "",
+    "status": "Selling",
+    "published": true,
+    "imageUrl": "/uploads/image-1753352759807-295059517.jpg",
+    "createdAt": "2025-07-24T10:25:59.846Z",
+    "updatedAt": "2025-07-25T06:34:55.254Z"
+  },
+  {
+    "id": 4,
+    "name": "Shoe",
+    "category": "Footwear",
+    "price": 250,
+    "salePrice": 300,
+    "stock": 10,
+    "description": "dfewrg",
+    "status": "Selling",
+    "published": true,
+    "imageUrl": "/uploads/image-1753360210906-842674295.webp",
+    "createdAt": "2025-07-24T12:30:10.940Z",
+    "updatedAt": "2025-07-24T12:39:08.041Z"
+  },
+  {
+    "id": 5,
+    "name": "Jeans",
+    "category": "Men",
+    "price": 249.98,
+    "salePrice": 250,
+    "stock": 100,
+    "description": "",
+    "status": "Selling",
+    "published": true,
+    "imageUrl": "/uploads/image-1753789502435-385573283.webp",
+    "createdAt": "2025-07-29T11:45:02.465Z"
+  },
+  {
+    "id": 6,
+    "name": "Digital Watch",
+    "category": "Accessories",
+    "price": 50,
+    "salePrice": 50,
+    "stock": 100,
+    "description": "",
+    "status": "Selling",
+    "published": true,
+    "imageUrl": "/uploads/image-1753877603770-114102183.png",
+    "createdAt": "2025-07-30T12:13:23.842Z"
+  }
+]
