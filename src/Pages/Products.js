@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   FaPlus, 
   FaTrash, 
@@ -9,12 +9,61 @@ import {
   FaRedo,
   FaEdit
 } from 'react-icons/fa';
-import { productsAPI } from '../services/api';
+
 import '../styles/Products.css';
 
 const Products = ({ theme = 'light' }) => {
   // State for storing products list
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      name: 'Classic White T-Shirt',
+      category: 'Men',
+      price: '25.00',
+      salePrice: '20.00',
+      stock: 50,
+      description: 'A timeless white t-shirt for everyday wear.',
+      status: 'Selling',
+      published: true,
+      imageUrl: '',
+    },
+    {
+      id: 2,
+      name: 'Elegant Handbag',
+      category: 'Women',
+      price: '120.00',
+      salePrice: '99.00',
+      stock: 15,
+      description: 'Stylish handbag for all occasions.',
+      status: 'Selling',
+      published: true,
+      imageUrl: '',
+    },
+    {
+      id: 3,
+      name: 'Running Shoes',
+      category: 'Footwear',
+      price: '75.00',
+      salePrice: '65.00',
+      stock: 30,
+      description: 'Comfortable running shoes for men and women.',
+      status: 'Selling',
+      published: true,
+      imageUrl: '',
+    },
+    {
+      id: 4,
+      name: 'Leather Belt',
+      category: 'Accessories',
+      price: '35.00',
+      salePrice: '30.00',
+      stock: 40,
+      description: 'Premium quality leather belt.',
+      status: 'Selling',
+      published: true,
+      imageUrl: '',
+    },
+  ]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -54,24 +103,9 @@ const Products = ({ theme = 'light' }) => {
   });
 
   // Load products when component mounts
-  useEffect(() => {
-    loadProducts();
-  }, []);
 
-  // Load products from API
-  const loadProducts = async () => {
-    try {
-      setLoading(true);
-      setError('');
-      const data = await productsAPI.getAll();
-      setProducts(data);
-    } catch (error) {
-      setError('Failed to load products: ' + error.message);
-      console.error('Error loading products:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+
+
 
   // Filter products based on search term and filters
   const filteredProducts = products.filter(product => {
@@ -153,23 +187,12 @@ const Products = ({ theme = 'light' }) => {
   };
 
   // Handle bulk delete
-  const handleBulkDelete = async () => {
+  const handleBulkDelete = () => {
     if (selectedProducts.length === 0) return;
-    
     if (window.confirm(`Are you sure you want to delete ${selectedProducts.length} products?`)) {
-      try {
-        setLoading(true);
-        for (const id of selectedProducts) {
-          await productsAPI.delete(id);
-        }
-        setProducts(prev => prev.filter(product => !selectedProducts.includes(product.id)));
-        setSelectedProducts([]);
-        setSelectAll(false);
-      } catch (error) {
-        setError('Failed to delete products: ' + error.message);
-      } finally {
-        setLoading(false);
-      }
+      setProducts(prev => prev.filter(product => !selectedProducts.includes(product.id)));
+      setSelectedProducts([]);
+      setSelectAll(false);
     }
   };
 
@@ -224,7 +247,8 @@ const Products = ({ theme = 'light' }) => {
     try {
       console.log('Starting image upload:', selectedImage.name);
       setUploadingImage(true);
-      const imageData = await productsAPI.uploadImage(selectedImage);
+  // Simulate image upload and return a local URL
+  const imageData = { imageUrl: imagePreview };
       console.log('Image upload successful:', imageData);
       return imageData.imageUrl;
     } catch (error) {
@@ -292,14 +316,14 @@ const Products = ({ theme = 'light' }) => {
 
       if (isEditing) {
         // Update existing product
-        const updatedProduct = await productsAPI.update(formData.id, productData);
+        // Update existing product in local state
         setProducts(prev => prev.map(product => 
-          product.id === formData.id ? updatedProduct : product
+          product.id === formData.id ? { ...productData, id: formData.id } : product
         ));
       } else {
         // Add new product
-        const newProduct = await productsAPI.create(productData);
-        setProducts(prev => [...prev, newProduct]);
+  // Add new product to local state
+  setProducts(prev => [...prev, { ...productData, id: Date.now() }]);
       }
 
       setShowModal(false);
@@ -331,8 +355,7 @@ const Products = ({ theme = 'light' }) => {
       try {
         setLoading(true);
         setError('');
-        await productsAPI.delete(id);
-        setProducts(prev => prev.filter(product => product.id !== id));
+  setProducts(prev => prev.filter(product => product.id !== id));
       } catch (error) {
         setError('Failed to delete product: ' + error.message);
         console.error('Error deleting product:', error);
@@ -377,7 +400,7 @@ const Products = ({ theme = 'light' }) => {
       {error && (
         <div className="error-message">
           {error}
-          <button onClick={loadProducts} className="retry-btn">Retry</button>
+          {/* Retry button removed since API is not used */}
         </div>
       )}
 
