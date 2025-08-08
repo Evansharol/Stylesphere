@@ -224,10 +224,10 @@
 /* Search and Filter Bar */
 .search-filter-container {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 24px;
-  gap: 40px;
+  gap: 20px;
   padding: 20px;
   background: white;
   border-radius: 12px;
@@ -237,9 +237,8 @@
 
 .search-box {
   position: relative;
-  flex: 1 1 350px;
+  flex: 1;
   max-width: 400px;
-  margin-right: 40px;
 }
 
 .search-box input {
@@ -270,34 +269,15 @@
 
 .filter-controls {
   display: flex;
-  gap: 18px;
+  gap: 12px;
   align-items: center;
-  flex: 2 1 400px;
 }
 
-@media (max-width: 900px) {
-  .search-filter-container {
-    flex-direction: column;
-    gap: 18px;
-    align-items: stretch;
-  }
-  .search-box {
-    margin-right: 0;
-    width: 100%;
-    max-width: 100%;
-  }
-  .filter-controls {
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-}
 .filter-select {
   padding: 10px 14px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 14px;
-  min-width: 120px;
   background: white;
   cursor: pointer;
   outline: none;
