@@ -11,6 +11,6 @@ Local Storage
 Nodeemailer
 
 Features:
-Authentication
-Products,Customer,Order,Staff Mangement
-Analytics Dashboard
+- Authentication
+- Products,Customer,Order,Staff Mangement
+- Analytics Dashboard
