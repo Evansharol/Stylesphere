@@ -1423,18 +1423,19 @@
 }
 
 .avatar-placeholder {
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.18);
+  border: 2px solid #ffffff;
+  margin-right: 0;
 }
 
 .customer-basic-info h3 {
@@ -1496,6 +1497,7 @@
   display: inline-flex;
   align-items: center;
   font-weight: 600;
+  font-size: 13px;
 }
 
 .status-indicator.active {
